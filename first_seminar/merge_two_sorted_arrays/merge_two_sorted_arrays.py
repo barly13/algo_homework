@@ -6,7 +6,7 @@ def merge_two_sorted_arrays(nums1: List[int], nums2: List[int]) -> List[int]:
     pointer2 = len(nums2) - 1
     pointer3 = len(nums1) + len(nums2) - 1
 
-    for i in range(pointer1, pointer3):
+    for _ in range(pointer1, pointer3):
         nums1.append(0)
 
     while pointer2 >= 0:
