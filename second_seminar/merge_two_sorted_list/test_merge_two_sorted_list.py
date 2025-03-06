@@ -11,6 +11,7 @@ def create_linked_list(values):
 
     head = ListNode(values[0])
     current = head
+
     for val in values[1:]:
         current.next = ListNode(val)
         current = current.next
@@ -22,9 +23,11 @@ def create_linked_list(values):
 def linked_list_to_list(head):
     result = []
     current = head
+
     while current:
         result.append(current.val)
         current = current.next
+
     return result
 
 
