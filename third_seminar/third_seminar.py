@@ -51,10 +51,6 @@ def binary_search_sqrt_2(target: int) -> int:
     return int(target ** 0.5)
 
 
-def copy_time(n, x, y) -> int:
-    pass
-
-
 def extra_letter_1(a: str, b: str) -> str:
     count = {}
 
@@ -76,7 +72,6 @@ def extra_letter_1(a: str, b: str) -> str:
     return ''
 
 
-
 def extra_letter_2(a: str, b: str) -> str:
     res = 0
 
@@ -84,4 +79,21 @@ def extra_letter_2(a: str, b: str) -> str:
         res ^= ord(c)
 
     return chr(res)
+
+
+def copy_time(n: int, x: int, y: int) -> int:
+    l = 0
+    r = (n - 1) * max(x, y)
+
+    while l + 1 < r:
+        m = (l + r) // 2
+
+        if m // x + m // y < n - 1:
+            l = m
+
+        else:
+            r = m
+
+    return r + min(x, y)
+
 
