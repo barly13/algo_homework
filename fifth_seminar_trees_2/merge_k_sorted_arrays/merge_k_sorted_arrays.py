@@ -34,6 +34,3 @@ def merge_k_sorted_arrays_2(sorted_arrays: List[List[int]]) -> List[int]:
             heapq.heappush(heap, (next_element, array_index, element_index + 1))
 
     return merged_array
-
-
-print(merge_k_sorted_arrays_2([[1, 2, 5], [4, 5, 8], [7, 99, 101]]))

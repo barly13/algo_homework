@@ -1,7 +1,7 @@
 from fourth_seminar_trees_1.tree_node import TreeNode
 
 
-def kth_smallest_bst_1(root: TreeNode | None, k: int) -> int | None:
+def kth_smallest_bst(root: TreeNode | None, k: int) -> int | None:
     stack = []
     counter = 0
 

@@ -1,3 +1,5 @@
+from collections import deque
+
 from fourth_seminar_trees_1.tree_node import TreeNode
 
 
@@ -5,7 +7,7 @@ def is_symmetric_bfs(root: TreeNode) -> bool:
     if root is None:
         return True
 
-    queue = [root]
+    queue = deque([root])
 
     while queue:
         qlen = len(queue)

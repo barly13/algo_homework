@@ -1,4 +1,4 @@
-import queue
+from collections import deque
 
 from fourth_seminar_trees_1.tree_node import TreeNode
 
@@ -7,10 +7,10 @@ def is_complete_tree(root: TreeNode | None) -> bool:
     if not root:
         return True
 
-    q = queue.Queue([root])
+    q = deque([root])
     seen_null = False
 
-    while queue:
+    while q:
         node = q.popleft()
 
         if not node:
