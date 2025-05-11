@@ -10,9 +10,6 @@ def extra_letter_1(a: str, b: str) -> str:
 
             if count[c] == 0:
                 del count[c]
-                continue
-
-            continue
 
         return c
 
