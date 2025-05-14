@@ -1,23 +1,54 @@
-from typing import Dict, List
+import pytest
+
+from seventh_seminar.find_connected_components.find_connected_components import find_connected_components
 
 
-def find_connected_components(graph: Dict[int, List[int]]) -> Dict[int, int]:
-    visited = {}
+@pytest.mark.parametrize("graph, expected_components", [
+    (
+        {
+            0: [1, 2],
+            1: [0, 2],
+            2: [0, 1],
+        },
+        {0: 1, 1: 1, 2: 1}
+    ),
+    (
+        {
+            0: [1],
+            1: [0],
+            2: []
+        },
+        {0: 1, 1: 1, 2: 2}
+    ),
+    (
+        {
+            0: [],
+            1: [],
+            2: []
+        },
+        {0: 1, 1: 2, 2: 3}
+    ),
+    (
+        {
+            0: [1],
+            1: [0, 2],
+            2: [1],
+            3: [4],
+            4: [3],
+        },
+        {0: 1, 1: 1, 2: 1, 3: 2, 4: 2}
+    ),
+    (
+        {
+            0: []
+        },
+        {0: 1}
+    )
+])
+def test_find_connected_components(graph, expected_components):
+    result = find_connected_components(graph)
 
-    def dfs(v: int, color: int):
-        visited[v] = color
+    assert len(set(result.values())) == len(set(expected_components.values()))
 
-        for neighbor in graph[v]:
-            if visited[neighbor] == 0:
-                dfs(neighbor, color)
-
-    for i in range(len(graph)):
-        visited[i] = 0
-
-    color = 0
-    for node in graph:
-        if visited[node] == 0:
-            color += 1
-            dfs(node, color)
-
-    return visited
+    for u, v in expected_components.items():
+        assert result[u] == v
